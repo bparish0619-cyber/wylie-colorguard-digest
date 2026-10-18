@@ -124,6 +124,17 @@
   }
   b.hl{color:var(--purple)}
   .next b.hl{color:var(--gold-soft)}
+  /* Links always sit on their own line as tappable pills,   */
+  /* never woven into a sentence.                            */
+  .links{display:flex; flex-wrap:wrap; gap:8px; margin-top:9px}
+  .links a{
+    display:inline-block; padding:5px 13px; border:1.5px solid var(--gold);
+    border-radius:999px; color:var(--purple); font-weight:700; font-size:14px;
+    text-decoration:none; background:rgba(201,162,39,.08);
+  }
+  .links a::after{content:" \2197"}
+  .next .links a{color:var(--gold-soft); border-color:var(--gold-soft); background:rgba(233,209,137,.12)}
+  footer .links{justify-content:center}
   footer{margin-top:36px; text-align:center; font-size:13px; color:var(--muted)}
   footer .sp{color:var(--gold)}
 </style>
@@ -133,7 +144,7 @@
 <header>
   <h1><span class="sp tw">&#10022;</span> Wylie Colorguard Digest <span class="sp tw2">&#10022;</span></h1>
   <p>Wylie HS Pure Gold</p>
-  <p id="updated">Updated Sun, Oct 18, 2026 &middot; 4:05 PM CT</p>
+  <p id="updated">Updated Sun, Oct 18, 2026 &middot; 4:10 PM CT</p>
 </header>
 
 <div class="wrap">
@@ -146,13 +157,14 @@
   <h2><span class="sp">&#10022;</span> Next Up</h2>
   <div class="card next">
     <p class="event">UIL Region Contest</p>
-    <p class="where">Monday, Oct 19 &middot; <a href="https://www.google.com/maps/search/?api=1&query=Shotwell+Stadium+Abilene+TX">Shotwell Stadium, Abilene</a></p>
+    <p class="where">Monday, Oct 19 &middot; Shotwell Stadium, Abilene</p>
     <ul class="facts">
       <li><span class="k">Guard bus leaves</span><span class="v">3:20 PM</span></li>
       <li><span class="k">Performance</span><span class="v">7:15 PM</span></li>
       <li><span class="k">Pickup after</span><span class="v">At Wylie HS</span></li>
       <li><span class="k">Wear to board</span><span class="v">Black travel shirt, shorts, tennis shoes</span></li>
     </ul>
+    <div class="links"><a href="https://www.google.com/maps/search/?api=1&query=Shotwell+Stadium+Abilene+TX">Directions</a></div>
   </div>
 </section>
 
@@ -176,10 +188,10 @@
   <h2><span class="sp">&#10022;</span> Major Dates</h2>
   <div class="card">
     <ul class="soon">
-      <li><span class="d">Mon Oct 19</span><span>UIL Region Contest, Shotwell Stadium, Abilene. <a href="https://www.uilmusicregion6.com/uploads/1/0/8/7/108710047/2026_region_6_uil_marching_contest_information_packet.pdf">Spectator info packet</a>.</span></li>
-      <li><span class="d">Sat Oct 24</span><span>UIL Area A Contest, Astound Stadium, Midland. <a href="http://www.uilmusicregion6.com/uploads/1/0/8/7/108710047/uil_2026-27_proposed_calendar_v1.pdf">Region 6 calendar</a>.</span></li>
-      <li><span class="d">Nov 2-3</span><span><a href="https://www.uiltexas.org/music/marching-band/state">UIL State Marching Contest</a>, Alamodome, San Antonio. 5A prelims Monday, finals Tuesday, with advancing from Area.</span></li>
-      <li><span class="d">Nov 7-8</span><span><b class="hl">BOA San Antonio trip.</b> The band performs Saturday Nov 7 at the Alamodome, stays the night, and returns Sunday Nov 8. <a href="https://www.ticketmaster.com/alamodome-tickets-san-antonio/venue/475247?attractionId=834336">Event and tickets</a>.</span></li>
+      <li><span class="d">Mon Oct 19</span><span>UIL Region Contest, Shotwell Stadium, Abilene.<span class="links"><a href="https://www.uilmusicregion6.com/uploads/1/0/8/7/108710047/2026_region_6_uil_marching_contest_information_packet.pdf">Spectator info packet</a></span></span></li>
+      <li><span class="d">Sat Oct 24</span><span>UIL Area A Contest, Astound Stadium, Midland.<span class="links"><a href="http://www.uilmusicregion6.com/uploads/1/0/8/7/108710047/uil_2026-27_proposed_calendar_v1.pdf">Region 6 calendar</a></span></span></li>
+      <li><span class="d">Nov 2-3</span><span>UIL State Marching Contest, Alamodome, San Antonio. 5A prelims Monday, finals Tuesday, with advancing from Area.<span class="links"><a href="https://www.uiltexas.org/music/marching-band/state">UIL state contest page</a></span></span></li>
+      <li><span class="d">Nov 7-8</span><span><b class="hl">BOA San Antonio trip.</b> The band performs Saturday Nov 7 at the Alamodome, stays the night, and returns Sunday Nov 8.<span class="links"><a href="https://www.ticketmaster.com/alamodome-tickets-san-antonio/venue/475247?attractionId=834336">Event and tickets</a></span></span></li>
       <li><span class="d">Sat Nov 14</span><span>Veterans Day Parade (tentative).</span></li>
       <li><span class="d">Winter</span><span>Winter guard (NTCA) dates have not been posted yet.</span></li>
     </ul>
@@ -191,7 +203,7 @@
   <div class="card">
     <ul class="soon">
       <li><span class="d">Tue or Wed</span><span>More UIL and Area details expected from Mr. McDonald.</span></li>
-      <li><span class="d">Sat Oct 24</span><span>UIL Area A Contest, <a href="https://www.google.com/maps/search/?api=1&query=Astound+Broadband+Stadium+Midland+TX">Astound Stadium, Midland</a>. Happens with a Division I rating at Region on Monday.</span></li>
+      <li><span class="d">Sat Oct 24</span><span>UIL Area A Contest, Astound Stadium, Midland. Happens with a Division I rating at Region on Monday.<span class="links"><a href="https://www.google.com/maps/search/?api=1&query=Astound+Broadband+Stadium+Midland+TX">Directions</a></span></span></li>
       <li><span class="d">Sun Oct 25</span><span>$30 BOA San Antonio fee due, on Presto.</span></li>
     </ul>
   </div>
@@ -201,8 +213,8 @@
   <h2><span class="sp">&#10022;</span> Volunteers &amp; Sign-Ups</h2>
   <div class="card">
     <ul class="soon">
-      <li><span class="d">Thu Oct 29</span><span>Bake sale fundraiser, East Junior High cafeteria, 5:30 to 7:30 PM. Donate homemade baked goods or help run it. <a href="https://www.signupgenius.com/go/30E0C4EA9AD2EA4FD0-66489034-wylie">Sign up here</a>.</span></li>
-      <li><span class="d">BOA rooms</span><span>Reserve rooms for the San Antonio trip (Nov 7-8) on the <a href="https://www.signupgenius.com/go/70A0D4DA5AA2CA0FE3-65515527-girls#/">room sign-up</a>.</span></li>
+      <li><span class="d">Thu Oct 29</span><span>Bake sale fundraiser, East Junior High cafeteria, 5:30 to 7:30 PM. Donate homemade baked goods or help run it.<span class="links"><a href="https://www.signupgenius.com/go/30E0C4EA9AD2EA4FD0-66489034-wylie">Sign up</a></span></span></li>
+      <li><span class="d">BOA rooms</span><span>Reserve rooms for the San Antonio trip (Nov 7-8).<span class="links"><a href="https://www.signupgenius.com/go/70A0D4DA5AA2CA0FE3-65515527-girls#/">Room sign-up</a></span></span></li>
       <li><span class="d">Chaperones</span><span>No chaperone asks posted right now. New asks will show up here.</span></li>
     </ul>
   </div>
@@ -212,9 +224,9 @@
   <h2><span class="sp">&#10022;</span> Standing Info</h2>
   <div class="card">
     <ul class="soon">
-      <li><span class="d">BOA trip</span><span>Sat Nov 7 to Sun Nov 8. Hotel: <a href="https://www.google.com/maps/search/?api=1&query=Hilton+Garden+Inn+5730+Rim+Pass+San+Antonio+TX">Hilton Garden Inn, 5730 Rim Pass</a>.</span></li>
-      <li><span class="d">Absences</span><span>Any absence needs the Band Absence Form, pinned in the <a href="https://www.band.us/band/96556943/post">Wylie Color Guard BAND group</a>.</span></li>
-      <li><span class="d">Rehearsals</span><span>Plans live in the pinned post in <a href="https://www.band.us/band/80889927/post">WHS Pure Gold Band</a> on BAND.</span></li>
+      <li><span class="d">BOA trip</span><span>Sat Nov 7 to Sun Nov 8. Hotel: Hilton Garden Inn, 5730 Rim Pass.<span class="links"><a href="https://www.google.com/maps/search/?api=1&query=Hilton+Garden+Inn+5730+Rim+Pass+San+Antonio+TX">Directions</a></span></span></li>
+      <li><span class="d">Absences</span><span>Any absence needs the Band Absence Form, pinned in the guard group on BAND.<span class="links"><a href="https://www.band.us/band/96556943/post">Open in BAND</a></span></span></li>
+      <li><span class="d">Rehearsals</span><span>Plans live in the pinned post in the main band group on BAND.<span class="links"><a href="https://www.band.us/band/80889927/post">Open in BAND</a></span></span></li>
     </ul>
   </div>
 </section>
@@ -222,8 +234,9 @@
 <!-- ================== DIGEST CONTENT END ================== -->
 
 <footer>
-  <p><span class="sp">&#10022;</span> Built from the BAND app groups, <a href="https://www.band.us/band/80889927/post">WHS Pure Gold Band</a> and <a href="https://www.band.us/band/96556943/post">Wylie Color Guard</a>.<br>
+  <p><span class="sp">&#10022;</span> Built from the two BAND app groups below.<br>
   Refreshed daily at 5:00 AM and 5:00 PM Central. <span class="sp">&#10022;</span></p>
+  <div class="links"><a href="https://www.band.us/band/80889927/post">WHS Pure Gold Band</a><a href="https://www.band.us/band/96556943/post">Wylie Color Guard</a></div>
 </footer>
 
 </div>
