@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  WYLIE COLORGUARD DIGEST  ·  index.html
+  ============================================================
+  A calm, mobile-first daily digest for the Wylie HS colorguard,
+  built from the BAND app groups (WHS Pure Gold Band and Wylie
+  Color Guard). Zyra refreshes this page twice a day, at
+  5:00 AM and 5:00 PM Central, and republishes it.
+
+  HOW TO EDIT BY HAND (Brandon):
+  - All digest content lives between the two markers
+    "DIGEST CONTENT START" and "DIGEST CONTENT END" below.
+    Change text there only; leave the <style> block alone
+    unless you want to restyle the whole page.
+  - The "last updated" stamp is the line with id="updated".
+  - Colors and spacing live in the :root variables at the top
+    of the <style> block. Those are the knobs worth turning.
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wylie Colorguard Digest</title>
+<style>
+  /* ---- Design knobs: change these to restyle the page ---- */
+  :root{
+    --ink:#2b2320;          /* main text */
+    --muted:#7a6a63;        /* softer text */
+    --bg:#faf6f2;           /* page background */
+    --card:#ffffff;         /* card background */
+    --maroon:#6e1423;       /* headings and accents */
+    --gold:#c99700;         /* small highlights */
+    --line:#eadfd6;         /* hairline dividers */
+    --radius:16px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:17px; line-height:1.55;
+  }
+  .wrap{max-width:640px; margin:0 auto; padding:0 16px 40px}
+
+  /* Silk ribbon header: layered gradients that read as flag silk */
+  header{
+    background:linear-gradient(115deg,#4a0e1c 0%,#6e1423 30%,#93345a 55%,#c96a4a 78%,#c99700 100%);
+    color:#fff; padding:30px 16px 24px; text-align:center;
+  }
+  header h1{margin:0; font-size:28px; letter-spacing:.4px}
+  header p{margin:6px 0 0; font-size:15px; opacity:.92}
+  #updated{font-size:13px; opacity:.8}
+
+  section{margin-top:26px}
+  h2{
+    font-size:14px; letter-spacing:1.6px; text-transform:uppercase;
+    color:var(--maroon); margin:0 4px 10px;
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line);
+    border-radius:var(--radius); padding:18px;
+  }
+  /* The next event gets the one strong card on the page */
+  .next{border:2px solid var(--maroon)}
+  .next .event{font-size:21px; font-weight:700; margin:0 0 2px}
+  .next .where{color:var(--muted); margin:0 0 14px}
+  .facts{list-style:none; margin:0; padding:0}
+  .facts li{
+    display:flex; justify-content:space-between; gap:14px;
+    padding:9px 0; border-top:1px solid var(--line);
+  }
+  .facts li:first-child{border-top:none; padding-top:0}
+  .facts .k{color:var(--muted)}
+  .facts .v{font-weight:600; text-align:right}
+
+  ul.checks{list-style:none; margin:0; padding:0}
+  ul.checks li{padding:9px 0 9px 26px; position:relative; border-top:1px solid var(--line)}
+  ul.checks li:first-child{border-top:none; padding-top:0}
+  ul.checks li::before{
+    content:""; position:absolute; left:2px; top:15px;
+    width:11px; height:11px; border:2px solid var(--gold); border-radius:3px;
+  }
+  ul.soon{list-style:none; margin:0; padding:0}
+  ul.soon li{display:flex; gap:14px; padding:10px 0; border-top:1px solid var(--line)}
+  ul.soon li:first-child{border-top:none; padding-top:0}
+  ul.soon .d{
+    flex:0 0 86px; font-weight:700; color:var(--maroon); font-size:15px; padding-top:1px;
+  }
+  .small{font-size:15px; color:var(--muted)}
+  b.hl{color:var(--maroon)}
+  footer{margin-top:34px; text-align:center; font-size:13px; color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Wylie Colorguard Digest</h1>
+  <p>Cadence &middot; Wylie HS Pure Gold</p>
+  <p id="updated">Updated Sun, Oct 18, 2026 &middot; 3:40 PM CT</p>
+</header>
+
+<div class="wrap">
+
+<!-- ================= DIGEST CONTENT START ================= -->
+<!-- The twice-daily refresh replaces everything between the    -->
+<!-- START and END markers. Keep this same section order.        -->
+
+<section>
+  <h2>Next Up</h2>
+  <div class="card next">
+    <p class="event">UIL Region Contest</p>
+    <p class="where">Monday, Oct 19 &middot; Shotwell Stadium, Abilene</p>
+    <ul class="facts">
+      <li><span class="k">Guard bus leaves</span><span class="v">3:20 PM</span></li>
+      <li><span class="k">Performance</span><span class="v">7:15 PM</span></li>
+      <li><span class="k">Pickup after</span><span class="v">At Wylie HS</span></li>
+      <li><span class="k">Wear to board</span><span class="v">Black travel shirt, shorts, tennis shoes</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Need to Know Now</h2>
+  <div class="card">
+    <ul class="checks">
+      <li>Load flag bags right after morning rehearsal on Monday.</li>
+      <li>Students are excused from 9th period. Head to the band hall at the end of 8th.</li>
+      <li>Hamburgers behind the band hall before the buses roll.</li>
+      <li>Uniforms and face paint happen at Shotwell.</li>
+      <li>Pickup is at Wylie HS after the contest, <b class="hl">not at Shotwell</b>.</li>
+      <li>Send-off lineup moved: Antilley Rd in <b class="hl">front</b> of the school. Band buses leave at 5:00 PM.</li>
+      <li>Spectators: entry is <b class="hl">$8, cash only</b>. Concessions and merch are card only. Enter through the South entrance.</li>
+      <li>Fee due Monday: <b class="hl">$20</b> BCMF shirt, on Presto.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Coming Up</h2>
+  <div class="card">
+    <ul class="soon">
+      <li><span class="d">Tue or Wed</span><span>More UIL and Area details expected from Mr. McDonald.</span></li>
+      <li><span class="d">Sat Oct 24</span><span>UIL Area A Contest, Astound Stadium, Midland. Happens with a Division I rating at Region on Monday.</span></li>
+      <li><span class="d">Sun Oct 25</span><span>$30 BOA San Antonio fee due, on Presto.</span></li>
+      <li><span class="d">Thu Oct 29</span><span>East Junior High bake sale fundraiser. Donated baked goods and volunteers needed.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Standing Info</h2>
+  <div class="card">
+    <ul class="soon">
+      <li><span class="d">BOA trip</span><span>San Antonio hotel: Hilton Garden Inn, 5730 Rim Pass.</span></li>
+      <li><span class="d">Absences</span><span>Any absence needs the Band Absence Form, pinned in the BAND app.</span></li>
+      <li><span class="d">Rehearsals</span><span>Plans live in the pinned post in WHS Pure Gold Band.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================== DIGEST CONTENT END ================== -->
+
+<footer>
+  <p>Built from the BAND app groups, WHS Pure Gold Band and Wylie Color Guard.<br>
+  Refreshed daily at 5:00 AM and 5:00 PM Central.</p>
+</footer>
+
+</div>
+</body>
+</html>
