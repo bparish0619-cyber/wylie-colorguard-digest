@@ -6,7 +6,7 @@
   A calm, mobile-first daily digest for the Wylie HS colorguard,
   built from the BAND app groups (WHS Pure Gold Band and Wylie
   Color Guard). Zyra refreshes this page twice a day, at
-  5:00 AM and 5:00 PM Central, and republishes it.
+  5:30 AM and 5:00 PM Central, and republishes it.
 
   STYLE: deep purple and gold, a little sparkle, teen friendly,
   deliberately muted (nothing neon, nothing glaring).
@@ -109,7 +109,7 @@
   .facts .v{font-weight:800; text-align:right; color:#fff}
 
   ul.checks{list-style:none; margin:0; padding:0}
-  ul.checks li{padding:9px 0 9px 28px; position:relative; border-top:1px solid var(--line)}
+  ul.checks li{padding:11px 0 11px 28px; position:relative; border-top:1px solid var(--line)}
   ul.checks li:first-child{border-top:none; padding-top:0}
   ul.checks li::before{
     content:""; position:absolute; left:2px; top:15px;
@@ -134,6 +134,25 @@
   }
   .links a::after{content:" \2197"}
   .next .links a{color:var(--gold-soft); border-color:var(--gold-soft); background:rgba(233,209,137,.12)}
+  /* Owner chips and group heads: the ADHD friendly layer   */
+  /* (added Oct 25, 2026). Every task carries a chip,         */
+  /* Students in purple or Parents in deep gold, so whose     */
+  /* job it is reads at a glance. Need to Know items sit      */
+  /* under short group headings, one bold fact plus one       */
+  /* short line each, never a paragraph.                      */
+  .who{
+    display:inline-block; font-size:11px; font-weight:800;
+    letter-spacing:.7px; text-transform:uppercase; color:#fff;
+    border-radius:999px; padding:1px 9px; margin-right:7px; vertical-align:2px;
+  }
+  .who-students{background:var(--purple)}
+  .who-parents{background:#8c6d1d}
+  .grouphead{
+    font-size:12.5px; font-weight:800; letter-spacing:1.4px;
+    text-transform:uppercase; color:var(--muted); margin:16px 0 0;
+  }
+  .grouphead:first-child{margin-top:0}
+  .sub{display:block; margin-top:2px}
   footer .links{justify-content:center}
   footer{margin-top:36px; text-align:center; font-size:13px; color:var(--muted)}
   footer .sp{color:var(--gold)}
@@ -144,7 +163,7 @@
 <header>
   <h1><span class="sp tw">&#10022;</span> Wylie Colorguard Digest <span class="sp tw2">&#10022;</span></h1>
   <p>Wylie HS Pure Gold</p>
-  <p id="updated">Updated Sun, Oct 25, 2026 &middot; 5:00 PM CT</p>
+  <p id="updated">Updated Sun, Oct 25, 2026 &middot; 10:19 PM CT</p>
 </header>
 
 <div class="wrap">
@@ -174,13 +193,18 @@
 <section>
   <h2><span class="sp">&#10022;</span> Need to Know Now</h2>
   <div class="card">
+    <p class="grouphead">For Parents</p>
     <ul class="checks">
-      <li><b class="hl">Advancing to State, confirmed Oct 25 in BAND.</b> The plan shared so far: leave Sunday morning, perform Monday morning, stay through finals Tuesday, and return after finals. Students will be excused Monday and Tuesday. Hotel and full schedule details are still being finalized, with more info expected this week.</li>
-      <li><b class="hl">State shirts: order by Monday Oct 26 at 3:00 PM, firm deadline.</b> Shirts are $25 each. Students do not need to order: students receive one free from their registration shirt size. Payment links will be sent Monday evening, payments are due by Thursday at 5:00 PM, and pickup is Saturday Oct 31 at the band hall, 12:00 to 2:00 PM.<span class="links"><a href="https://forms.gle/CLFAmy9fRcaDT7pH6">Order form</a></span></li>
-      <li><b class="hl">Monday Oct 26: East Junior High pep rally performance for guard performers.</b> Bring a plain black tank and leggings. Meet at 7:30 to run through a few times before leaving at 8:00, as posted in the guard chat.</li>
-      <li><b class="hl">Guard sectionals are off this week and next week.</b> Indoor season audition dates have not been posted yet and will be shared when available.</li>
-      <li>Rehearsals this week: Monday class rehearsal 8:15 AM, Tuesday morning rehearsal 7:00 AM, Wednesday class rehearsal 8:15 AM, Thursday morning rehearsal 7:00 AM, Friday morning rehearsal 7:00 AM.</li>
-      <li>Friday pep rally wear: grey show shirt, section shirt, or senior jersey.</li>
+      <li><span class="who who-parents">Parents</span><b class="hl">State shirts: order by Monday Oct 26, 3:00 PM. Firm deadline.</b><span class="sub">$25 each. Students receive one free, no order needed for them. Pay by Thursday 5:00 PM; payment links arrive Monday evening. Pickup Saturday Oct 31, band hall, 12:00 to 2:00 PM.</span><span class="links"><a href="https://forms.gle/CLFAmy9fRcaDT7pH6">Order form</a></span></li>
+      <li><span class="who who-parents">Parents</span><b class="hl">State trip: hotel and full schedule still coming.</b><span class="sub">More info expected this week.</span></li>
+    </ul>
+    <p class="grouphead">For Students</p>
+    <ul class="checks">
+      <li><span class="who who-students">Students</span><b class="hl">State bound, confirmed Oct 25.</b><span class="sub">Leave Sunday morning &middot; Perform Monday morning &middot; Finals Tuesday &middot; Excused Monday and Tuesday.</span></li>
+      <li><span class="who who-students">Students</span><b class="hl">Monday: East Junior High pep rally.</b><span class="sub">Plain black tank + leggings &middot; Meet 7:30 &middot; Leave 8:00.</span></li>
+      <li><span class="who who-students">Students</span><b class="hl">Sectionals are OFF this week and next.</b><span class="sub">Indoor audition dates have not been posted yet.</span></li>
+      <li><span class="who who-students">Students</span><b class="hl">Rehearsals this week.</b><span class="sub">Mon 8:15 AM &middot; Tue 7:00 AM &middot; Wed 8:15 AM &middot; Thu 7:00 AM &middot; Fri 7:00 AM.</span></li>
+      <li><span class="who who-students">Students</span><b class="hl">Friday pep rally wear.</b><span class="sub">Grey show shirt, section shirt, or senior jersey.</span></li>
     </ul>
   </div>
 </section>
@@ -203,7 +227,7 @@
     <ul class="soon">
       <li><span class="d">Mon Oct 26</span><span>East Junior High pep rally performance for guard performers. Plain black tank and leggings.</span></li>
       <li><span class="d">Fri Oct 30</span><span>Football Game at Wichita Falls Legacy, Memorial Stadium. Game at 7:00 PM, return to WHS about 1:00 AM.</span></li>
-      <li><span class="d">Sat Oct 31</span><span>State shirt pickup, band hall, 12:00 to 2:00 PM.</span></li>
+      <li><span class="d">Sat Oct 31</span><span><span class="who who-parents">Parents</span>State shirt pickup, band hall, 12:00 to 2:00 PM.</span></li>
       <li><span class="d">Nov 2-3</span><span>UIL State Marching Contest, Alamodome, San Antonio. Confirmed advancing.</span></li>
       <li><span class="d">Fri Nov 6</span><span>Home Football Game vs Abilene Cooper.</span></li>
       <li><span class="d">Nov 7-8</span><span>BOA San Antonio trip, Alamodome. Performs Saturday, returns Sunday.</span></li>
@@ -215,8 +239,8 @@
   <h2><span class="sp">&#10022;</span> Volunteers &amp; Sign-Ups</h2>
   <div class="card">
     <ul class="soon">
-      <li><span class="d">Thu Oct 29</span><span>Bake sale fundraiser, East Junior High cafeteria, 5:30 to 7:30 PM. Donate homemade baked goods or help run it.<span class="links"><a href="https://www.signupgenius.com/go/30E0C4EA9AD2EA4FD0-66489034-wylie">Sign up</a></span></span></li>
-      <li><span class="d">BOA rooms</span><span>Reserve rooms for the San Antonio trip (Nov 7-8).<span class="links"><a href="https://www.signupgenius.com/go/70A0D4DA5AA2CA0FE3-65515527-girls#/">Room sign-up</a></span></span></li>
+      <li><span class="d">Thu Oct 29</span><span><span class="who who-parents">Parents</span>Bake sale fundraiser, East Junior High cafeteria, 5:30 to 7:30 PM. Donate homemade baked goods or help run it.<span class="links"><a href="https://www.signupgenius.com/go/30E0C4EA9AD2EA4FD0-66489034-wylie">Sign up</a></span></span></li>
+      <li><span class="d">BOA rooms</span><span><span class="who who-parents">Parents</span>Reserve rooms for the San Antonio trip (Nov 7-8).<span class="links"><a href="https://www.signupgenius.com/go/70A0D4DA5AA2CA0FE3-65515527-girls#/">Room sign-up</a></span></span></li>
       <li><span class="d">Chaperones</span><span>No chaperone asks posted right now. New asks will show up here.</span></li>
     </ul>
   </div>
@@ -237,7 +261,7 @@
 
 <footer>
   <p><span class="sp">&#10022;</span> Built from the two BAND app groups below.<br>
-  Refreshed daily at 5:00 AM and 5:00 PM Central. <span class="sp">&#10022;</span></p>
+  Refreshed daily at 5:30 AM and 5:00 PM Central. <span class="sp">&#10022;</span></p>
   <div class="links"><a href="https://www.band.us/band/80889927/post">WHS Pure Gold Band</a><a href="https://www.band.us/band/96556943/post">Wylie Color Guard</a></div>
 </footer>
 
