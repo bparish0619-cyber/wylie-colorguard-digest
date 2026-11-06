@@ -223,6 +223,29 @@
      because the hidden state only exists once the script adds the class. */
   .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease}
   .reveal.in{opacity:1; transform:none}
+
+  /* Responsive layout (added Nov 5, 2026 at Brandon's request):
+     phones get the single calm column; wider screens (tablets, an
+     unfolded Fold, desktops) spread the sections across two columns
+     under a full-width Next Up hero, and very small phones tighten
+     the fact rows and date pills so nothing squeezes. */
+  @media (min-width: 900px){
+    .wrap{max-width:1080px; display:grid; grid-template-columns:1fr 1fr; column-gap:22px; align-items:start}
+    .wrap > section:first-of-type{grid-column:1 / -1}
+    .wrap > p, .wrap > footer, .wrap > .installwrap{grid-column:1 / -1}
+    header{max-width:1048px}
+    .next .event{font-size:26px}
+  }
+  @media (min-width: 1400px){
+    body{font-size:18px}
+  }
+  @media (max-width: 420px){
+    header h1{font-size:27px}
+    .facts li{flex-direction:column; gap:2px}
+    .facts .v{text-align:left}
+    ul.soon .d{flex-basis:80px; font-size:12px}
+    .card{padding:15px}
+  }
   @media (prefers-reduced-motion: reduce){
     .tw,.tw2,header::after{animation:none}
     .reveal{opacity:1; transform:none; transition:none}
@@ -382,7 +405,17 @@
   }
   var pgeo = new THREE.BufferGeometry();
   pgeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  var pmat = new THREE.PointsMaterial({ color: 0xe8b33c, size: 0.09, transparent: true, opacity: 0.85 });
+  // Soft round gold sprite: a radial-gradient texture, because a bare
+  // PointsMaterial draws hard squares (Brandon flagged it 2026-11-05).
+  var sc = document.createElement('canvas'); sc.width = sc.height = 64;
+  var sg = sc.getContext('2d');
+  var grad = sg.createRadialGradient(32, 32, 0, 32, 32, 32);
+  grad.addColorStop(0, 'rgba(255,242,205,1)');
+  grad.addColorStop(0.35, 'rgba(232,179,60,0.9)');
+  grad.addColorStop(1, 'rgba(232,179,60,0)');
+  sg.fillStyle = grad; sg.fillRect(0, 0, 64, 64);
+  var sprite = new THREE.CanvasTexture(sc);
+  var pmat = new THREE.PointsMaterial({ map: sprite, color: 0xffd97a, size: 0.16, transparent: true, opacity: 0.9, depthWrite: false, blending: THREE.AdditiveBlending });
   var sparks = new THREE.Points(pgeo, pmat);
   scene.add(sparks);
 
