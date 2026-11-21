@@ -21,6 +21,11 @@
     Change text there only; leave the <style> block alone
     unless you want to restyle the whole page.
   - The "last updated" stamp is the line with id="updated".
+  - The page wears the Sylva shell (Nov 21, 2026): the six
+    sections are views swapped in place from a purple glass
+    sidebar (desktop, foldable) and a floating glass dock
+    (phone). Shell markup, styles, and scripts live outside
+    the markers; see DESIGN.md section 10.
   - Icon, manifest, and service worker files live in ./assets/
     and in the Cloudflare staging folder; deploys upload the
     whole staging folder, so those files ride along untouched.
@@ -270,9 +275,124 @@
     .reveal{opacity:1; transform:none; transition:none}
     .card,.links a,.links a::after,.installbtn{transition:none}
   }
+
+  /* ---- Sylva shell (added 2026-11-21 at Brandon's direction) ----
+     The six digest sections are views that swap in place inside one
+     app shell: a folding purple glass sidebar on desktop, a floating
+     purple glass dock on phone. Glass is chrome only (sidebar and
+     dock), at the tuned Sylva values: tint about 60 percent of the
+     purple, blur 20px, saturate 160 percent, a specular inset top
+     highlight, and a solid fallback when backdrop blur is missing.
+     The section cards keep their own glass recipe above; nothing
+     about the digest content changes. Shell markup, styles, and
+     scripts live OUTSIDE the digest markers and are settled: the
+     refresh only rewrites the sections between the markers, each
+     carrying class="view" and its data-view attribute (DESIGN.md
+     section 10). Without JavaScript the .shell class is never added
+     and every section simply shows, one calm column as before. */
+  #sidebar, #dock{display:none}
+  .side-brand{
+    font-family:"Playfair Display",Georgia,serif; font-size:19px;
+    letter-spacing:.4px; color:#f0d488; padding:2px 6px 4px;
+  }
+  .side-brand .sp{color:var(--gold-bright); font-size:14px}
+  .side-nav{display:flex; flex-direction:column}
+  .navbtn{
+    display:flex; align-items:center; width:100%; min-height:44px;
+    padding:9px 12px; margin:0 0 6px; text-align:left; cursor:pointer;
+    font-family:inherit; font-size:15px; font-weight:700; color:var(--ink);
+    background:rgba(201,162,39,.07); border:1px solid rgba(233,209,137,.18);
+    border-radius:12px;
+    transition: background var(--dur-small) ease, color var(--dur-small) ease;
+  }
+  .navbtn:hover{background:rgba(201,162,39,.16)}
+  .navbtn.active{
+    background:linear-gradient(92deg, var(--gold), var(--gold-bright));
+    color:#000000; border-color:transparent;
+  }
+  .navbtn .ns{display:none}
+  .foldbtn{
+    margin-top:auto; align-self:flex-end; width:44px; height:44px;
+    cursor:pointer; font-size:22px; line-height:1; color:var(--gold-soft);
+    background:rgba(201,162,39,.08); border:1px solid rgba(233,209,137,.25);
+    border-radius:12px;
+  }
+  .foldbtn:hover{background:rgba(201,162,39,.18)}
+  .shell section.view{display:none}
+  .shell section.view.active{display:block; animation:viewin var(--dur-menu) var(--ease-out-strong)}
+  @keyframes viewin{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+  @media (min-width: 900px){
+    .shell #sidebar{
+      display:flex; flex-direction:column; gap:14px;
+      position:fixed; top:0; left:0; bottom:0; width:236px; z-index:30;
+      padding:20px 14px calc(16px + env(safe-area-inset-bottom));
+      background:linear-gradient(165deg, rgba(64,20,92,.62), rgba(30,8,48,.78));
+      border-right:1px solid var(--glass-line);
+      backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: inset 0 1px 0 rgba(255,244,200,.22), 18px 0 44px rgba(0,0,0,.35);
+    }
+    .shell .shell-main{margin-left:236px}
+    .shell .wrap{display:block; max-width:760px}
+    .shell header{max-width:728px}
+    body.nav-folded #sidebar{width:68px; padding-left:8px; padding-right:8px}
+    body.nav-folded .shell-main{margin-left:68px}
+    body.nav-folded .side-brand{text-align:center}
+    body.nav-folded .side-brand .nl{display:none}
+    body.nav-folded .navbtn{justify-content:center; padding:9px 4px}
+    body.nav-folded .navbtn .nl{display:none}
+    body.nav-folded .navbtn .ns{display:inline; font-size:11.5px}
+    body.nav-folded .foldbtn{align-self:center}
+  }
+  @media (max-width: 899px){
+    .shell #dock{
+      display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:4px;
+      position:fixed; z-index:40;
+      left:4px; right:4px; bottom:calc(4px + env(safe-area-inset-bottom));
+      padding:6px;
+      background:linear-gradient(165deg, rgba(64,20,92,.62), rgba(30,8,48,.80));
+      border:1px solid var(--glass-line); border-radius:18px;
+      backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+      box-shadow: inset 0 1px 0 rgba(255,244,200,.22), 0 14px 34px rgba(0,0,0,.45);
+    }
+    .shell .wrap{padding-bottom:118px}
+  }
+  .dockbtn{
+    min-height:48px; min-width:0; padding:6px 2px; cursor:pointer;
+    font-family:inherit; font-size:11px; font-weight:700; color:var(--ink);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    background:transparent; border:1px solid transparent; border-radius:12px;
+    transition: background var(--dur-small) ease, color var(--dur-small) ease;
+  }
+  .dockbtn.active{
+    background:linear-gradient(92deg, var(--gold), var(--gold-bright));
+    color:#000000;
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+    .shell #sidebar, .shell #dock{background:linear-gradient(165deg, #40145c, #1e0830)}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .shell section.view.active{animation:none}
+    .navbtn,.dockbtn{transition:none}
+  }
 </style>
 </head>
 <body>
+<script>document.body.classList.add('shell');</script>
+
+<aside id="sidebar" aria-label="Digest sections">
+  <div class="side-brand"><span class="sp">&#10022;</span><span class="nl"> Colorguard Digest</span></div>
+  <nav class="side-nav">
+    <button type="button" class="navbtn active" data-target="next" aria-current="page"><span class="nl">Next Up</span><span class="ns">Next</span></button>
+    <button type="button" class="navbtn" data-target="know"><span class="nl">Need to Know Now</span><span class="ns">Know</span></button>
+    <button type="button" class="navbtn" data-target="dates"><span class="nl">Major Dates</span><span class="ns">Dates</span></button>
+    <button type="button" class="navbtn" data-target="coming"><span class="nl">Coming Up</span><span class="ns">Coming</span></button>
+    <button type="button" class="navbtn" data-target="volunteers"><span class="nl">Volunteers &amp; Sign-Ups</span><span class="ns">Sign-Ups</span></button>
+    <button type="button" class="navbtn" data-target="standing"><span class="nl">Standing Info</span><span class="ns">Standing</span></button>
+  </nav>
+  <button type="button" id="foldBtn" class="foldbtn" aria-expanded="true" aria-label="Fold or unfold the sidebar">&#8249;</button>
+</aside>
+
+<div class="shell-main">
 
 <header>
   <h1><span class="sp tw">&#10022;</span> Wylie Colorguard Digest <span class="sp tw2">&#10022;</span></h1>
@@ -284,10 +404,17 @@
 <div class="wrap">
 
 <!-- ================= DIGEST CONTENT START ================= -->
-<!-- The twice-daily refresh replaces everything between the    -->
-<!-- START and END markers. Keep this same section order.        -->
+<!-- SYLVA SHELL CONTRACT (set 2026-11-21): the refresh replaces -->
+<!-- everything between the START and END markers, and the six   -->
+<!-- sections below are shell VIEWS that swap in place from the  -->
+<!-- sidebar and dock outside the markers. Keep this exact       -->
+<!-- section order and keep each section's class="view" and      -->
+<!-- data-view attribute exactly as written: next, know, dates,  -->
+<!-- coming, volunteers, standing. A section without its         -->
+<!-- data-view attribute breaks the shell navigation. Never add  -->
+<!-- nav, wrapper, style, or script markup between the markers. -->
 
-<section>
+<section class="view" data-view="next">
   <h2><span class="sp">&#10022;</span> Next Up</h2>
   <div class="card next">
     <p class="event">NTCA Student Experience Clinic</p>
@@ -301,7 +428,7 @@
   </div>
 </section>
 
-<section>
+<section class="view" data-view="know">
   <h2><span class="sp">&#10022;</span> Need to Know Now</h2>
   <div class="card">
     <ul class="checks">
@@ -311,7 +438,7 @@
   </div>
 </section>
 
-<section>
+<section class="view" data-view="dates">
   <h2><span class="sp">&#10022;</span> Major Dates</h2>
   <div class="card">
     <ul class="soon">
@@ -322,7 +449,7 @@
   </div>
 </section>
 
-<section>
+<section class="view" data-view="coming">
   <h2><span class="sp">&#10022;</span> Coming Up</h2>
   <div class="card">
     <ul class="soon">
@@ -331,7 +458,7 @@
   </div>
 </section>
 
-<section>
+<section class="view" data-view="volunteers">
   <h2><span class="sp">&#10022;</span> Volunteers &amp; Sign-Ups</h2>
   <div class="card">
     <ul class="soon">
@@ -341,7 +468,7 @@
   </div>
 </section>
 
-<section>
+<section class="view" data-view="standing">
   <h2><span class="sp">&#10022;</span> Standing Info</h2>
   <div class="card">
     <ul class="soon">
@@ -376,7 +503,17 @@
     </div>
   </div>
 
-</div>
+</div><!-- /.wrap -->
+</div><!-- /.shell-main -->
+
+<nav id="dock" aria-label="Digest sections">
+  <button type="button" class="dockbtn active" data-target="next" aria-current="page">Next</button>
+  <button type="button" class="dockbtn" data-target="know">Know Now</button>
+  <button type="button" class="dockbtn" data-target="dates">Dates</button>
+  <button type="button" class="dockbtn" data-target="coming">Coming</button>
+  <button type="button" class="dockbtn" data-target="volunteers">Sign-Ups</button>
+  <button type="button" class="dockbtn" data-target="standing">Standing</button>
+</nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -476,7 +613,7 @@
 
 <script>
 (function () {
-  var sections = document.querySelectorAll('section');
+  var sections = document.querySelectorAll('section:not([data-view])');
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -557,7 +694,55 @@
     }
   });
   window.addEventListener('appinstalled', function () { btn.style.display = 'none'; if (help) help.style.display = 'none'; });
-})();
+</script>
+
+<script>
+  // Sylva shell view switching (added 2026-11-21): the sidebar and
+  // the phone dock swap the six digest sections in place, exactly
+  // one view visible at a time, no reload. The view key also lands
+  // in the URL hash so a shared link can open a section directly.
+  // If this script never runs, the end-of-body guard below removes
+  // the .shell class and every section shows, one calm column.
+  (function () {
+    var body = document.body;
+    var views = Array.prototype.slice.call(document.querySelectorAll('section.view[data-view]'));
+    var btns = Array.prototype.slice.call(document.querySelectorAll('[data-target]'));
+    if (!views.length || !btns.length) { body.classList.remove('shell'); return; }
+    function activate(key, push) {
+      var found = false;
+      views.forEach(function (v) {
+        var on = v.getAttribute('data-view') === key;
+        v.classList.toggle('active', on);
+        if (on) found = true;
+      });
+      if (!found) {
+        key = views[0].getAttribute('data-view');
+        views[0].classList.add('active');
+      }
+      btns.forEach(function (b) {
+        var on = b.getAttribute('data-target') === key;
+        b.classList.toggle('active', on);
+        if (on) { b.setAttribute('aria-current', 'page'); }
+        else { b.removeAttribute('aria-current'); }
+      });
+      if (push) {
+        try { history.replaceState(null, '', '#' + key); } catch (e) {}
+        window.scrollTo(0, 0);
+      }
+    }
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () { activate(b.getAttribute('data-target'), true); });
+    });
+    var fold = document.getElementById('foldBtn');
+    if (fold) {
+      fold.addEventListener('click', function () {
+        var folded = body.classList.toggle('nav-folded');
+        fold.setAttribute('aria-expanded', folded ? 'false' : 'true');
+        fold.innerHTML = folded ? '&#8250;' : '&#8249;';
+      });
+    }
+    activate((location.hash || '').replace('#', '') || 'next', false);
+  })();
 </script>
 </body>
 </html>
